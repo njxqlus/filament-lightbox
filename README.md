@@ -1,61 +1,60 @@
-# :package_description
+# Lightbox for Filament
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/njxqlus/filament-lightbox.svg?style=flat-square)](https://packagist.org/packages/njxqlus/filament-lightbox)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/njxqlus/filament-lightbox/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/njxqlus/filament-lightbox/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/njxqlus/filament-lightbox.svg?style=flat-square)](https://packagist.org/packages/njxqlus/filament-lightbox)
 
-<!--delete-->
----
-This repo can be used to scaffold a Filament plugin. Follow these steps to get started:
+<img alt="banner" class="filament-hidden" src="https://github.com/njxqlus/filament-lightbox/blob/main/.github/banner.jpg?raw=true">
 
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Make something great!
----
-<!--/delete-->
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Lightbox entry for Filament.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-config"
+composer require njxqlus/filament-lightbox
 ```
 
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-views"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
+php artisan vendor:publish --tag="filament-lightbox-views"
 ```
 
 ## Usage
 
+To use `LightboxEntry` you need to pass something into schema and add a `href()`. There can be any component or components
+inside schema. There is an example with `ImageEntry` below.
+
 ```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+use Njxqlus\Filament\Components\Infolists\LightboxEntry;
+
+LightboxEntry::make()
+    ->schema([
+        ImageEntry::make('image')
+            ->circular()
+    ])
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
+```
+
+This component use [GLightBox](https://github.com/biati-digital/glightbox) under the hood. Most of it`s options provided as
+chain methods. There are some of them in the example below.
+
+```php
+use Njxqlus\Filament\Components\Infolists\LightboxEntry;
+
+LightboxEntry::make()
+    ->schema([
+        ImageEntry::make('image')
+            ->circular()
+    ])
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
+    ->description(new HtmlString('<strong>Lightbox</strong>'))
+    ->loop()
+    ->width('906px')
+    ->height('500px')
+    ->effect('zoom')
 ```
 
 ## Testing
@@ -78,7 +77,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Mikael Ahabalyants](https://github.com/njxqlus)
 - [All Contributors](../../contributors)
 
 ## License
