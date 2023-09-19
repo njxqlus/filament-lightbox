@@ -9,48 +9,77 @@ class LightboxEntry extends Component
 {
     protected string $view = 'filament-lightbox::infolists.lightbox-entry';
 
-    protected Closure|string $href;
-    protected Closure|string $title = '';
-    protected Closure|string $description = '';
-    protected Closure|string $descPosition = 'bottom';
-    protected Closure|string $type = 'image';
-    protected Closure|string $effect = 'zoom';
-    protected Closure|string $width = '900px';
-    protected Closure|string $height = '506px';
-    protected Closure|bool $zoomable = true;
-    protected Closure|bool $draggable = true;
-    protected Closure|string $sizes = '';
-    protected Closure|string $srcSet = '';
-    protected Closure|string $selector = '.glightbox';
-    protected Closure|string $skin = 'clean';
-    protected Closure|string $openEffect = 'zoom';
-    protected Closure|string $closeEffect = 'zoom';
-    protected Closure|string $slideEffect = 'slide';
-    protected Closure|string $moreText = 'See more';
-    protected Closure|int $moreLength = 60;
-    protected Closure|bool $closeButton = true;
-    protected Closure|bool $touchNavigation = true;
-    protected Closure|bool $touchFollowAxis = true;
-    protected Closure|bool $keyBoardNavigation = true;
-    protected Closure|bool $closeOnOutsideClick = true;
-    protected Closure|bool $loop = false;
-    protected Closure|int $dragToleranceX = 40;
-    protected Closure|int $dragToleranceY = 65;
-    protected Closure|bool $dragAutoSnap = false;
-    protected Closure|bool $preload = true;
-    protected Closure|bool $autoplayVideos = true;
-    protected Closure|bool $autofocusVideos = false;
+    protected Closure | string $href;
 
+    protected Closure | string $title = '';
 
-    final public function __construct(array|Closure $schema = [])
+    protected Closure | string $description = '';
+
+    protected Closure | string $descPosition = 'bottom';
+
+    protected Closure | string $type = 'image';
+
+    protected Closure | string $effect = 'zoom';
+
+    protected Closure | string $width = '900px';
+
+    protected Closure | string $height = '506px';
+
+    protected Closure | bool $zoomable = true;
+
+    protected Closure | bool $draggable = true;
+
+    protected Closure | string $sizes = '';
+
+    protected Closure | string $srcSet = '';
+
+    protected Closure | string $selector = '.glightbox';
+
+    protected Closure | string $skin = 'clean';
+
+    protected Closure | string $openEffect = 'zoom';
+
+    protected Closure | string $closeEffect = 'zoom';
+
+    protected Closure | string $slideEffect = 'slide';
+
+    protected Closure | string $moreText = 'See more';
+
+    protected Closure | int $moreLength = 60;
+
+    protected Closure | bool $closeButton = true;
+
+    protected Closure | bool $touchNavigation = true;
+
+    protected Closure | bool $touchFollowAxis = true;
+
+    protected Closure | bool $keyBoardNavigation = true;
+
+    protected Closure | bool $closeOnOutsideClick = true;
+
+    protected Closure | bool $loop = false;
+
+    protected Closure | int $dragToleranceX = 40;
+
+    protected Closure | int $dragToleranceY = 65;
+
+    protected Closure | bool $dragAutoSnap = false;
+
+    protected Closure | bool $preload = true;
+
+    protected Closure | bool $autoplayVideos = true;
+
+    protected Closure | bool $autofocusVideos = false;
+
+    final public function __construct(array | Closure $schema = [])
     {
         $this->schema($schema);
     }
 
     /**
-     * @param array<Component> | Closure $schema
+     * @param  array<Component> | Closure  $schema
      */
-    public static function make(array|Closure $schema = []): static
+    public static function make(array | Closure $schema = []): static
     {
         $static = app(static::class, ['schema' => $schema]);
         $static->configure();
@@ -58,7 +87,7 @@ class LightboxEntry extends Component
         return $static;
     }
 
-    public function href(string|Closure $href): static
+    public function href(string | Closure $href): static
     {
         $this->href = $href;
 
@@ -70,7 +99,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->href);
     }
 
-    public function title(string|Closure $title): static
+    public function title(string | Closure $title): static
     {
         $this->title = $title;
 
@@ -82,7 +111,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->title);
     }
 
-    public function description(string|Closure $description): static
+    public function description(string | Closure $description): static
     {
         $this->description = $description;
 
@@ -94,7 +123,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->description);
     }
 
-    public function descPosition(string|Closure $descPosition): static
+    public function descPosition(string | Closure $descPosition): static
     {
         $this->descPosition = $descPosition;
 
@@ -106,7 +135,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->descPosition);
     }
 
-    public function type(string|Closure $type): static
+    public function type(string | Closure $type): static
     {
         $this->type = $type;
 
@@ -118,7 +147,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->type);
     }
 
-    public function effect(string|Closure $effect): static
+    public function effect(string | Closure $effect): static
     {
         $this->effect = $effect;
 
@@ -130,7 +159,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->effect);
     }
 
-    public function width(string|Closure $width): static
+    public function width(string | Closure $width): static
     {
         $this->width = $width;
 
@@ -142,7 +171,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->width);
     }
 
-    public function height(string|Closure $height): static
+    public function height(string | Closure $height): static
     {
         $this->height = $height;
 
@@ -154,7 +183,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->height);
     }
 
-    public function zoomable(bool|Closure $condition = true): static
+    public function zoomable(bool | Closure $condition = true): static
     {
         $this->zoomable = $condition;
 
@@ -166,7 +195,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->zoomable);
     }
 
-    public function draggable(bool|Closure $condition = true): static
+    public function draggable(bool | Closure $condition = true): static
     {
         $this->draggable = $condition;
 
@@ -178,7 +207,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->draggable);
     }
 
-    public function sizes(string|Closure $sizes): static
+    public function sizes(string | Closure $sizes): static
     {
         $this->sizes = $sizes;
 
@@ -190,7 +219,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->sizes);
     }
 
-    public function srcSet(string|Closure $srcSet): static
+    public function srcSet(string | Closure $srcSet): static
     {
         $this->srcSet = $srcSet;
 
@@ -202,7 +231,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->srcSet);
     }
 
-    public function selector(string|Closure $selector): static
+    public function selector(string | Closure $selector): static
     {
         $this->selector = $selector;
 
@@ -214,8 +243,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->selector);
     }
 
-
-    public function skin(string|Closure $skin): static
+    public function skin(string | Closure $skin): static
     {
         $this->skin = $skin;
 
@@ -227,7 +255,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->skin);
     }
 
-    public function openEffect(string|Closure $openEffect): static
+    public function openEffect(string | Closure $openEffect): static
     {
         $this->openEffect = $openEffect;
 
@@ -239,7 +267,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->openEffect);
     }
 
-    public function closeEffect(string|Closure $closeEffect): static
+    public function closeEffect(string | Closure $closeEffect): static
     {
         $this->closeEffect = $closeEffect;
 
@@ -251,7 +279,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->closeEffect);
     }
 
-    public function slideEffect(string|Closure $slideEffect): static
+    public function slideEffect(string | Closure $slideEffect): static
     {
         $this->slideEffect = $slideEffect;
 
@@ -263,7 +291,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->slideEffect);
     }
 
-    public function moreText(string|Closure $moreText): static
+    public function moreText(string | Closure $moreText): static
     {
         $this->moreText = $moreText;
 
@@ -275,7 +303,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->moreText);
     }
 
-    public function moreLength(int|Closure $moreLength): static
+    public function moreLength(int | Closure $moreLength): static
     {
         $this->moreLength = $moreLength;
 
@@ -287,7 +315,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->moreLength);
     }
 
-    public function closeButton(bool|Closure $condition = true): static
+    public function closeButton(bool | Closure $condition = true): static
     {
         $this->closeButton = $condition;
 
@@ -299,7 +327,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->closeButton);
     }
 
-    public function touchNavigation(bool|Closure $condition = true): static
+    public function touchNavigation(bool | Closure $condition = true): static
     {
         $this->touchNavigation = $condition;
 
@@ -311,7 +339,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->touchNavigation);
     }
 
-    public function touchFollowAxis(bool|Closure $condition = true): static
+    public function touchFollowAxis(bool | Closure $condition = true): static
     {
         $this->touchFollowAxis = $condition;
 
@@ -323,7 +351,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->touchFollowAxis);
     }
 
-    public function keyBoardNavigation(bool|Closure $condition = true): static
+    public function keyBoardNavigation(bool | Closure $condition = true): static
     {
         $this->keyBoardNavigation = $condition;
 
@@ -335,7 +363,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->keyBoardNavigation);
     }
 
-    public function closeOnOutsideClick(bool|Closure $condition = true): static
+    public function closeOnOutsideClick(bool | Closure $condition = true): static
     {
         $this->closeOnOutsideClick = $condition;
 
@@ -347,7 +375,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->closeOnOutsideClick);
     }
 
-    public function loop(bool|Closure $condition = true): static
+    public function loop(bool | Closure $condition = true): static
     {
         $this->loop = $condition;
 
@@ -359,7 +387,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->loop);
     }
 
-    public function dragToleranceX(string|Closure $dragToleranceX): static
+    public function dragToleranceX(string | Closure $dragToleranceX): static
     {
         $this->dragToleranceX = $dragToleranceX;
 
@@ -371,7 +399,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->dragToleranceX);
     }
 
-    public function dragToleranceY(string|Closure $dragToleranceY): static
+    public function dragToleranceY(string | Closure $dragToleranceY): static
     {
         $this->dragToleranceY = $dragToleranceY;
 
@@ -383,7 +411,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->dragToleranceY);
     }
 
-    public function dragAutoSnap(bool|Closure $condition = true): static
+    public function dragAutoSnap(bool | Closure $condition = true): static
     {
         $this->dragAutoSnap = $condition;
 
@@ -395,7 +423,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->dragAutoSnap);
     }
 
-    public function preload(bool|Closure $condition = true): static
+    public function preload(bool | Closure $condition = true): static
     {
         $this->preload = $condition;
 
@@ -407,7 +435,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->preload);
     }
 
-    public function autoplayVideos(bool|Closure $condition = true): static
+    public function autoplayVideos(bool | Closure $condition = true): static
     {
         $this->autoplayVideos = $condition;
 
@@ -419,7 +447,7 @@ class LightboxEntry extends Component
         return $this->evaluate($this->autoplayVideos);
     }
 
-    public function autofocusVideos(bool|Closure $condition = true): static
+    public function autofocusVideos(bool | Closure $condition = true): static
     {
         $this->autofocusVideos = $condition;
 
