@@ -52,9 +52,28 @@ LightboxEntry::make()
     ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
     ->description(new HtmlString('<strong>Lightbox</strong>'))
     ->loop()
-    ->width('906px')
-    ->height('500px')
+    ->widthOption('906px')
+    ->heightOption('500px')
     ->effect('zoom')
+```
+
+You also can use `LightboxImageEntry` if you need lightbox for one image.
+
+```php
+use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
+
+LightboxImageEntry::make('image')
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
+```
+
+You can also call an `image` method to pass custom URL for image.
+
+```php
+use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
+
+LightboxImageEntry::make('image')
+    ->url('https://biati-digital.github.io/glightbox/demo/img/small/gm2.jpg')
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
 ```
 
 ## Testing
