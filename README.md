@@ -6,7 +6,7 @@
 
 <img alt="banner" class="filament-hidden" src="https://github.com/njxqlus/filament-lightbox/blob/main/.github/banner.jpg?raw=true">
 
-Lightbox entry for Filament.
+Lightbox components for Filament.
 
 ## Installation
 
@@ -24,56 +24,86 @@ php artisan vendor:publish --tag="filament-lightbox-views"
 
 ## Usage
 
-To use `LightboxEntry` you need to pass something into schema and add a `href()`. There can be any component or components
-inside schema. There is an example with `ImageEntry` below.
+### LightboxImageEntry
+
+This entry extend default `ImageEntry` and wrap it to lightbox. To use it you need to pass an url to `href()` method.
 
 ```php
-use Njxqlus\Filament\Components\Infolists\LightboxEntry;
+use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
 
-LightboxEntry::make()
+LightboxImageEntry::make('foo')
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
+```
+
+Also, you can pass an url to `image()` method that's accept a `Closure`.
+
+```php
+use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
+
+LightboxImageEntry::make('foo')
+    ->image('https://biati-digital.github.io/glightbox/demo/img/small/gm2.jpg')
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
+```
+
+By default, all lightbox images on page are on the same gallery. It's mean that you can use arrow to move between them. 
+If you want to divide galleries use a `gallery()` method.
+
+```php
+use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
+
+LightboxImageEntry::make('foo')          
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')   
+    ->gallery('qux-gallery')
+
+LightboxImageEntry::make('bar')
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm8.jpg')
+    ->gallery('qux-gallery')
+
+LightboxImageEntry::make('baz')
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm9.jpg')
+    ->gallery('fred-gallery'),
+```
+
+Because this entry extends [ImageEntry](https://filamentphp.com/docs/3.x/infolists/entries/image) all methods should be work (except of `url()`).
+
+```php
+use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
+
+LightboxImageEntry::make('foo')
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')   
+    ->circular()
+    ->label('Bar'),
+```
+
+### Lightbox Component
+
+This component allows you to pass any other entries to schema that's open lightbox.
+
+```php
+use Njxqlus\Filament\Components\Infolists\Lightbox;
+
+Lightbox::make()
     ->schema([
-        ImageEntry::make('image')
-            ->circular()
+        TextEntry::make('foo')
     ])
     ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
 ```
 
-This component use [GLightBox](https://github.com/biati-digital/glightbox) under the hood. Most of it`s options provided as
+### GLightBox
+
+This package uses [GLightBox](https://github.com/biati-digital/glightbox) under the hood. Most of it`s options provided as
 chain methods. There are some of them in the example below.
 
 ```php
-use Njxqlus\Filament\Components\Infolists\LightboxEntry;
+use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
 
-LightboxEntry::make()
-    ->schema([
-        ImageEntry::make('image')
-            ->circular()
-    ])
-    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
+LightboxImageEntry::make('foo')
+    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')   
     ->description(new HtmlString('<strong>Lightbox</strong>'))
     ->loop()
     ->widthOption('906px')
     ->heightOption('500px')
-    ->effect('zoom')
-```
-
-You also can use `LightboxImageEntry` if you need lightbox for one image.
-
-```php
-use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
-
-LightboxImageEntry::make('image')
-    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
-```
-
-You can also call an `image` method to pass custom URL for image.
-
-```php
-use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
-
-LightboxImageEntry::make('image')
-    ->url('https://biati-digital.github.io/glightbox/demo/img/small/gm2.jpg')
-    ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
+    ->closeButton(false)
 ```
 
 ## Testing

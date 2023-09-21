@@ -10,21 +10,16 @@ class LightboxImageEntry extends ImageEntry
 {
     use GLightBox;
 
-    protected string $view = 'filament-lightbox::infolists.lightbox-image-entry';
-
     protected Closure|string $href;
-    protected Closure|string $image = '';
+    protected Closure|string|null $image = null;
+
+    public string $parentEntryWrapper;
 
     public function image(string|Closure $image): static
     {
         $this->image = $image;
 
         return $this;
-    }
-
-    public function getImage(): string
-    {
-        return $this->evaluate($this->image);
     }
 
     public function href(string|Closure $href): static
@@ -37,5 +32,17 @@ class LightboxImageEntry extends ImageEntry
     public function getHref(): string
     {
         return $this->evaluate($this->href);
+    }
+
+    public function getEntryWrapperView(): string
+    {
+        $this->parentEntryWrapper = parent::getEntryWrapperView();
+
+        return 'filament-lightbox::lightbox-wrapper';
+    }
+
+    public function getImageUrl(?string $state = null): ?string
+    {
+        return $this->image ? $this->evaluate($this->image) : parent::getImageUrl($state);
     }
 }

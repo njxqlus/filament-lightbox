@@ -6,67 +6,77 @@ use Closure;
 
 trait GLightBox
 {
-    protected Closure | string $title = '';
+    protected Closure|string $gallery = 'gallery1';
 
-    protected Closure | string $description = '';
+    protected Closure|string $title = '';
 
-    protected Closure | string $descPosition = 'bottom';
+    protected Closure|string $description = '';
 
-    protected Closure | string $type = 'image';
+    protected Closure|string $descPosition = 'bottom';
 
-    protected Closure | string $effect = 'zoom';
+    protected Closure|string $type = 'image';
 
-    protected Closure | string $widthOption = '900px';
+    protected Closure|string $widthOption = '900px';
 
-    protected Closure | string $heightOption = '506px';
+    protected Closure|string $heightOption = '506px';
 
-    protected Closure | bool $zoomable = true;
+    protected Closure|bool $zoomable = true;
 
-    protected Closure | bool $draggable = true;
+    protected Closure|bool $draggable = true;
 
-    protected Closure | string $sizes = '';
+    protected Closure|string $sizes = '';
 
-    protected Closure | string $srcSet = '';
+    protected Closure|string $srcSet = '';
 
-    protected Closure | string $selector = '.glightbox';
+    protected Closure|string $selector = '.glightbox';
 
-    protected Closure | string $skin = 'clean';
+    protected Closure|string $skin = 'clean';
 
-    protected Closure | string $openEffect = 'zoom';
+    protected Closure|string $effect = 'zoom';
 
-    protected Closure | string $closeEffect = 'zoom';
+    protected Closure|string $slideEffect = 'slide';
 
-    protected Closure | string $slideEffect = 'slide';
+    protected Closure|string $moreText = 'See more';
 
-    protected Closure | string $moreText = 'See more';
+    protected Closure|int $moreLength = 60;
 
-    protected Closure | int $moreLength = 60;
+    protected Closure|bool $closeButton = true;
 
-    protected Closure | bool $closeButton = true;
+    protected Closure|bool $touchNavigation = true;
 
-    protected Closure | bool $touchNavigation = true;
+    protected Closure|bool $touchFollowAxis = true;
 
-    protected Closure | bool $touchFollowAxis = true;
+    protected Closure|bool $keyBoardNavigation = true;
 
-    protected Closure | bool $keyBoardNavigation = true;
+    protected Closure|bool $closeOnOutsideClick = true;
 
-    protected Closure | bool $closeOnOutsideClick = true;
+    protected Closure|bool $loop = false;
 
-    protected Closure | bool $loop = false;
+    protected Closure|int $dragToleranceX = 40;
 
-    protected Closure | int $dragToleranceX = 40;
+    protected Closure|int $dragToleranceY = 65;
 
-    protected Closure | int $dragToleranceY = 65;
+    protected Closure|bool $dragAutoSnap = false;
 
-    protected Closure | bool $dragAutoSnap = false;
+    protected Closure|bool $preload = true;
 
-    protected Closure | bool $preload = true;
+    protected Closure|bool $autoplayVideos = true;
 
-    protected Closure | bool $autoplayVideos = true;
+    protected Closure|bool $autofocusVideos = false;
 
-    protected Closure | bool $autofocusVideos = false;
+    public function gallery(string|Closure $gallery): static
+    {
+        $this->gallery = $gallery;
 
-    public function title(string | Closure $title): static
+        return $this;
+    }
+
+    public function getGallery(): string
+    {
+        return $this->evaluate($this->gallery);
+    }
+
+    public function title(string|Closure $title): static
     {
         $this->title = $title;
 
@@ -78,7 +88,7 @@ trait GLightBox
         return $this->evaluate($this->title);
     }
 
-    public function description(string | Closure $description): static
+    public function description(string|Closure $description): static
     {
         $this->description = $description;
 
@@ -90,7 +100,7 @@ trait GLightBox
         return $this->evaluate($this->description);
     }
 
-    public function descPosition(string | Closure $descPosition): static
+    public function descPosition(string|Closure $descPosition): static
     {
         $this->descPosition = $descPosition;
 
@@ -102,7 +112,7 @@ trait GLightBox
         return $this->evaluate($this->descPosition);
     }
 
-    public function type(string | Closure $type): static
+    public function type(string|Closure $type): static
     {
         $this->type = $type;
 
@@ -114,7 +124,7 @@ trait GLightBox
         return $this->evaluate($this->type);
     }
 
-    public function effect(string | Closure $effect): static
+    public function effect(string|Closure $effect): static
     {
         $this->effect = $effect;
 
@@ -126,7 +136,7 @@ trait GLightBox
         return $this->evaluate($this->effect);
     }
 
-    public function widthOption(string | Closure $width): static
+    public function widthOption(string|Closure $width): static
     {
         $this->widthOption = $width;
 
@@ -138,7 +148,7 @@ trait GLightBox
         return $this->evaluate($this->widthOption);
     }
 
-    public function heightOption(string | Closure $height): static
+    public function heightOption(string|Closure $height): static
     {
         $this->heightOption = $height;
 
@@ -150,7 +160,7 @@ trait GLightBox
         return $this->evaluate($this->heightOption);
     }
 
-    public function zoomable(bool | Closure $condition = true): static
+    public function zoomable(bool|Closure $condition = true): static
     {
         $this->zoomable = $condition;
 
@@ -162,7 +172,7 @@ trait GLightBox
         return $this->evaluate($this->zoomable);
     }
 
-    public function draggable(bool | Closure $condition = true): static
+    public function draggable(bool|Closure $condition = true): static
     {
         $this->draggable = $condition;
 
@@ -174,7 +184,7 @@ trait GLightBox
         return $this->evaluate($this->draggable);
     }
 
-    public function sizes(string | Closure $sizes): static
+    public function sizes(string|Closure $sizes): static
     {
         $this->sizes = $sizes;
 
@@ -186,7 +196,7 @@ trait GLightBox
         return $this->evaluate($this->sizes);
     }
 
-    public function srcSet(string | Closure $srcSet): static
+    public function srcSet(string|Closure $srcSet): static
     {
         $this->srcSet = $srcSet;
 
@@ -198,7 +208,7 @@ trait GLightBox
         return $this->evaluate($this->srcSet);
     }
 
-    public function selector(string | Closure $selector): static
+    public function selector(string|Closure $selector): static
     {
         $this->selector = $selector;
 
@@ -210,7 +220,7 @@ trait GLightBox
         return $this->evaluate($this->selector);
     }
 
-    public function skin(string | Closure $skin): static
+    public function skin(string|Closure $skin): static
     {
         $this->skin = $skin;
 
@@ -222,31 +232,7 @@ trait GLightBox
         return $this->evaluate($this->skin);
     }
 
-    public function openEffect(string | Closure $openEffect): static
-    {
-        $this->openEffect = $openEffect;
-
-        return $this;
-    }
-
-    public function getOpenEffect(): string
-    {
-        return $this->evaluate($this->openEffect);
-    }
-
-    public function closeEffect(string | Closure $closeEffect): static
-    {
-        $this->closeEffect = $closeEffect;
-
-        return $this;
-    }
-
-    public function getCloseEffect(): string
-    {
-        return $this->evaluate($this->closeEffect);
-    }
-
-    public function slideEffect(string | Closure $slideEffect): static
+    public function slideEffect(string|Closure $slideEffect): static
     {
         $this->slideEffect = $slideEffect;
 
@@ -258,7 +244,7 @@ trait GLightBox
         return $this->evaluate($this->slideEffect);
     }
 
-    public function moreText(string | Closure $moreText): static
+    public function moreText(string|Closure $moreText): static
     {
         $this->moreText = $moreText;
 
@@ -270,7 +256,7 @@ trait GLightBox
         return $this->evaluate($this->moreText);
     }
 
-    public function moreLength(int | Closure $moreLength): static
+    public function moreLength(int|Closure $moreLength): static
     {
         $this->moreLength = $moreLength;
 
@@ -282,7 +268,7 @@ trait GLightBox
         return $this->evaluate($this->moreLength);
     }
 
-    public function closeButton(bool | Closure $condition = true): static
+    public function closeButton(bool|Closure $condition = true): static
     {
         $this->closeButton = $condition;
 
@@ -294,7 +280,7 @@ trait GLightBox
         return $this->evaluate($this->closeButton);
     }
 
-    public function touchNavigation(bool | Closure $condition = true): static
+    public function touchNavigation(bool|Closure $condition = true): static
     {
         $this->touchNavigation = $condition;
 
@@ -306,7 +292,7 @@ trait GLightBox
         return $this->evaluate($this->touchNavigation);
     }
 
-    public function touchFollowAxis(bool | Closure $condition = true): static
+    public function touchFollowAxis(bool|Closure $condition = true): static
     {
         $this->touchFollowAxis = $condition;
 
@@ -318,7 +304,7 @@ trait GLightBox
         return $this->evaluate($this->touchFollowAxis);
     }
 
-    public function keyBoardNavigation(bool | Closure $condition = true): static
+    public function keyBoardNavigation(bool|Closure $condition = true): static
     {
         $this->keyBoardNavigation = $condition;
 
@@ -330,7 +316,7 @@ trait GLightBox
         return $this->evaluate($this->keyBoardNavigation);
     }
 
-    public function closeOnOutsideClick(bool | Closure $condition = true): static
+    public function closeOnOutsideClick(bool|Closure $condition = true): static
     {
         $this->closeOnOutsideClick = $condition;
 
@@ -342,7 +328,7 @@ trait GLightBox
         return $this->evaluate($this->closeOnOutsideClick);
     }
 
-    public function loop(bool | Closure $condition = true): static
+    public function loop(bool|Closure $condition = true): static
     {
         $this->loop = $condition;
 
@@ -354,7 +340,7 @@ trait GLightBox
         return $this->evaluate($this->loop);
     }
 
-    public function dragToleranceX(string | Closure $dragToleranceX): static
+    public function dragToleranceX(string|Closure $dragToleranceX): static
     {
         $this->dragToleranceX = $dragToleranceX;
 
@@ -366,7 +352,7 @@ trait GLightBox
         return $this->evaluate($this->dragToleranceX);
     }
 
-    public function dragToleranceY(string | Closure $dragToleranceY): static
+    public function dragToleranceY(string|Closure $dragToleranceY): static
     {
         $this->dragToleranceY = $dragToleranceY;
 
@@ -378,7 +364,7 @@ trait GLightBox
         return $this->evaluate($this->dragToleranceY);
     }
 
-    public function dragAutoSnap(bool | Closure $condition = true): static
+    public function dragAutoSnap(bool|Closure $condition = true): static
     {
         $this->dragAutoSnap = $condition;
 
@@ -390,7 +376,7 @@ trait GLightBox
         return $this->evaluate($this->dragAutoSnap);
     }
 
-    public function preload(bool | Closure $condition = true): static
+    public function preload(bool|Closure $condition = true): static
     {
         $this->preload = $condition;
 
@@ -402,7 +388,7 @@ trait GLightBox
         return $this->evaluate($this->preload);
     }
 
-    public function autoplayVideos(bool | Closure $condition = true): static
+    public function autoplayVideos(bool|Closure $condition = true): static
     {
         $this->autoplayVideos = $condition;
 
@@ -414,7 +400,7 @@ trait GLightBox
         return $this->evaluate($this->autoplayVideos);
     }
 
-    public function autofocusVideos(bool | Closure $condition = true): static
+    public function autofocusVideos(bool|Closure $condition = true): static
     {
         $this->autofocusVideos = $condition;
 
