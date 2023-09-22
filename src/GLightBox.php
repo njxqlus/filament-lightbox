@@ -8,31 +8,31 @@ trait GLightBox
 {
     abstract public function evaluate(mixed $value, array $namedInjections = [], array $typedInjections = []): mixed;
 
-    protected Closure|string $slideGallery = 'gallery1';
+    protected Closure | string $slideGallery = 'gallery1';
 
-    protected Closure|string $slideTitle = '';
+    protected Closure | string $slideTitle = '';
 
-    protected Closure|string $slideDescription = '';
+    protected Closure | string $slideDescription = '';
 
-    protected Closure|string $slideDescPosition = 'bottom';
+    protected Closure | string $slideDescPosition = 'bottom';
 
-    protected Closure|string $slideType = 'image';
+    protected Closure | string $slideType = 'image';
 
-    protected Closure|string $slideWidth = '900px';
+    protected Closure | string $slideWidth = '900px';
 
-    protected Closure|string $slideHeight = '506px';
+    protected Closure | string $slideHeight = '506px';
 
-    protected Closure|bool $slideZoomable = true;
+    protected Closure | bool $slideZoomable = true;
 
-    protected Closure|bool $slideDraggable = true;
+    protected Closure | bool $slideDraggable = true;
 
-    protected Closure|string $slideSizes = '';
+    protected Closure | string $slideSizes = '';
 
-    protected Closure|string $slideSrcSet = '';
+    protected Closure | string $slideSrcSet = '';
 
-    protected Closure|string $slideEffect = 'zoom';
+    protected Closure | string $slideEffect = 'zoom';
 
-    public function slideGallery(string|Closure $slideGallery): static
+    public function slideGallery(string | Closure $slideGallery): static
     {
         $this->slideGallery = $slideGallery;
 
@@ -44,7 +44,7 @@ trait GLightBox
         return $this->evaluate($this->slideGallery);
     }
 
-    public function slideTitle(string|Closure $slideTitle): static
+    public function slideTitle(string | Closure $slideTitle): static
     {
         $this->slideTitle = $slideTitle;
 
@@ -56,7 +56,7 @@ trait GLightBox
         return $this->evaluate($this->slideTitle);
     }
 
-    public function slideDescription(string|Closure $slideDescription): static
+    public function slideDescription(string | Closure $slideDescription): static
     {
         $this->slideDescription = $slideDescription;
 
@@ -68,7 +68,7 @@ trait GLightBox
         return $this->evaluate($this->slideDescription);
     }
 
-    public function slideDescPosition(string|Closure $slideDescPosition): static
+    public function slideDescPosition(string | Closure $slideDescPosition): static
     {
         $this->slideDescPosition = $slideDescPosition;
 
@@ -80,7 +80,7 @@ trait GLightBox
         return $this->evaluate($this->slideDescPosition);
     }
 
-    public function slideType(string|Closure $slideType): static
+    public function slideType(string | Closure $slideType): static
     {
         $this->slideType = $slideType;
 
@@ -92,7 +92,7 @@ trait GLightBox
         return $this->evaluate($this->slideType);
     }
 
-    public function slideEffect(string|Closure $slideEffect): static
+    public function slideEffect(string | Closure $slideEffect): static
     {
         $this->slideEffect = $slideEffect;
 
@@ -104,7 +104,7 @@ trait GLightBox
         return $this->evaluate($this->slideEffect);
     }
 
-    public function slideWidth(string|Closure $slideWidth): static
+    public function slideWidth(string | Closure $slideWidth): static
     {
         $this->slideWidth = $slideWidth;
 
@@ -116,7 +116,7 @@ trait GLightBox
         return $this->evaluate($this->slideWidth);
     }
 
-    public function slideHeight(string|Closure $slideHeight): static
+    public function slideHeight(string | Closure $slideHeight): static
     {
         $this->slideHeight = $slideHeight;
 
@@ -128,7 +128,7 @@ trait GLightBox
         return $this->evaluate($this->slideHeight);
     }
 
-    public function slideZoomable(bool|Closure $condition = true): static
+    public function slideZoomable(bool | Closure $condition = true): static
     {
         $this->slideZoomable = $condition;
 
@@ -140,7 +140,7 @@ trait GLightBox
         return $this->evaluate($this->slideZoomable);
     }
 
-    public function slideDraggable(bool|Closure $condition = true): static
+    public function slideDraggable(bool | Closure $condition = true): static
     {
         $this->slideDraggable = $condition;
 
@@ -152,7 +152,7 @@ trait GLightBox
         return $this->evaluate($this->slideDraggable);
     }
 
-    public function slideSizes(string|Closure $slideSizes): static
+    public function slideSizes(string | Closure $slideSizes): static
     {
         $this->slideSizes = $slideSizes;
 
@@ -164,7 +164,7 @@ trait GLightBox
         return $this->evaluate($this->slideSizes);
     }
 
-    public function slideSrcSet(string|Closure $slideSrcSet): static
+    public function slideSrcSet(string | Closure $slideSrcSet): static
     {
         $this->slideSrcSet = $slideSrcSet;
 
