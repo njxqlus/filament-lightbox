@@ -23,12 +23,12 @@ if (class_exists('\Filament\Infolists\Components\SpatieMediaLibraryImageEntry'))
             return LightboxComponentContainer::make($this->getLivewire())
                 ->parentComponent($this)
                 ->components(
-                    fn() => $this
+                    fn () => $this
                         ->getRecord()
                         ->getRelationValue('media')
-                        ->filter(fn(Media $media): bool => blank($this->getCollection()) || ($media->getAttributeValue('collection_name') === $this->getCollection()))
+                        ->filter(fn (Media $media): bool => blank($this->getCollection()) || ($media->getAttributeValue('collection_name') === $this->getCollection()))
                         ->sortBy('order_column')
-                        ->transform(fn(Media $item) => $this->makeLightboxEntryFromMedia($item))
+                        ->transform(fn (Media $item) => $this->makeLightboxEntryFromMedia($item))
                         ->toArray()
                 );
         }
