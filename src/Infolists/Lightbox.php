@@ -12,17 +12,17 @@ class Lightbox extends Component
 
     protected string $view = 'filament-lightbox::infolists.lightbox';
 
-    protected Closure|string $href;
+    protected Closure | string $href;
 
-    final public function __construct(array|Closure $schema = [])
+    final public function __construct(array | Closure $schema = [])
     {
         $this->schema($schema);
     }
 
     /**
-     * @param array<Component> | Closure $schema
+     * @param  array<Component> | Closure  $schema
      */
-    public static function make(array|Closure $schema = []): static
+    public static function make(array | Closure $schema = []): static
     {
         $static = app(static::class, ['schema' => $schema]);
         $static->configure();
@@ -30,7 +30,7 @@ class Lightbox extends Component
         return $static;
     }
 
-    public function href(string|Closure $href): static
+    public function href(string | Closure $href): static
     {
         $this->href = $href;
 
