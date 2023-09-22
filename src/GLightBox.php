@@ -6,230 +6,88 @@ use Closure;
 
 trait GLightBox
 {
-    protected Closure|string $gallery = 'gallery1';
+    protected Closure|string $slideGallery = 'gallery1';
 
-    protected Closure|string $title = '';
+    protected Closure|string $slideTitle = '';
 
-    protected Closure|string $description = '';
+    protected Closure|string $slideDescription = '';
 
-    protected Closure|string $descPosition = 'bottom';
+    protected Closure|string $slideDescPosition = 'bottom';
 
-    protected Closure|string $type = 'image';
+    protected Closure|string $slideType = 'image';
 
-    protected Closure|string $widthOption = '900px';
+    protected Closure|string $slideWidth = '900px';
 
-    protected Closure|string $heightOption = '506px';
+    protected Closure|string $slideHeight = '506px';
 
-    protected Closure|bool $zoomable = true;
+    protected Closure|bool $slideZoomable = true;
 
-    protected Closure|bool $draggable = true;
+    protected Closure|bool $slideDraggable = true;
 
-    protected Closure|string $sizes = '';
+    protected Closure|string $slideSizes = '';
 
-    protected Closure|string $srcSet = '';
+    protected Closure|string $slideSrcSet = '';
 
-    protected Closure|string $selector = '.glightbox';
+    protected Closure|string $slideEffect = 'zoom';
 
-    protected Closure|string $skin = 'clean';
-
-    protected Closure|string $effect = 'zoom';
-
-    protected Closure|string $slideEffect = 'slide';
-
-    protected Closure|string $moreText = 'See more';
-
-    protected Closure|int $moreLength = 60;
-
-    protected Closure|bool $closeButton = true;
-
-    protected Closure|bool $touchNavigation = true;
-
-    protected Closure|bool $touchFollowAxis = true;
-
-    protected Closure|bool $keyBoardNavigation = true;
-
-    protected Closure|bool $closeOnOutsideClick = true;
-
-    protected Closure|bool $loop = false;
-
-    protected Closure|int $dragToleranceX = 40;
-
-    protected Closure|int $dragToleranceY = 65;
-
-    protected Closure|bool $dragAutoSnap = false;
-
-    protected Closure|bool $preload = true;
-
-    protected Closure|bool $autoplayVideos = true;
-
-    protected Closure|bool $autofocusVideos = false;
-
-    public function gallery(string|Closure $gallery): static
+    public function slideGallery(string|Closure $slideGallery): static
     {
-        $this->gallery = $gallery;
+        $this->slideGallery = $slideGallery;
 
         return $this;
     }
 
-    public function getGallery(): string
+    public function getSlideGallery(): string
     {
-        return $this->evaluate($this->gallery);
+        return $this->evaluate($this->slideGallery);
     }
 
-    public function title(string|Closure $title): static
+    public function slideTitle(string|Closure $slideTitle): static
     {
-        $this->title = $title;
+        $this->slideTitle = $slideTitle;
 
         return $this;
     }
 
-    public function getTitle(): string
+    public function getSlideTitle(): string
     {
-        return $this->evaluate($this->title);
+        return $this->evaluate($this->slideTitle);
     }
 
-    public function description(string|Closure $description): static
+    public function slideDescription(string|Closure $slideDescription): static
     {
-        $this->description = $description;
+        $this->slideDescription = $slideDescription;
 
         return $this;
     }
 
-    public function getDescription(): string
+    public function getSlideDescription(): string
     {
-        return $this->evaluate($this->description);
+        return $this->evaluate($this->slideDescription);
     }
 
-    public function descPosition(string|Closure $descPosition): static
+    public function slideDescPosition(string|Closure $slideDescPosition): static
     {
-        $this->descPosition = $descPosition;
+        $this->slideDescPosition = $slideDescPosition;
 
         return $this;
     }
 
-    public function getDescPosition(): string
+    public function getSlideDescPosition(): string
     {
-        return $this->evaluate($this->descPosition);
+        return $this->evaluate($this->slideDescPosition);
     }
 
-    public function type(string|Closure $type): static
+    public function slideType(string|Closure $slideType): static
     {
-        $this->type = $type;
+        $this->slideType = $slideType;
 
         return $this;
     }
 
-    public function getType(): string
+    public function getSlideType(): string
     {
-        return $this->evaluate($this->type);
-    }
-
-    public function effect(string|Closure $effect): static
-    {
-        $this->effect = $effect;
-
-        return $this;
-    }
-
-    public function getEffect(): string
-    {
-        return $this->evaluate($this->effect);
-    }
-
-    public function widthOption(string|Closure $width): static
-    {
-        $this->widthOption = $width;
-
-        return $this;
-    }
-
-    public function getWidthOption(): string
-    {
-        return $this->evaluate($this->widthOption);
-    }
-
-    public function heightOption(string|Closure $height): static
-    {
-        $this->heightOption = $height;
-
-        return $this;
-    }
-
-    public function getHeightOption(): string
-    {
-        return $this->evaluate($this->heightOption);
-    }
-
-    public function zoomable(bool|Closure $condition = true): static
-    {
-        $this->zoomable = $condition;
-
-        return $this;
-    }
-
-    public function getZoomable(): bool
-    {
-        return $this->evaluate($this->zoomable);
-    }
-
-    public function draggable(bool|Closure $condition = true): static
-    {
-        $this->draggable = $condition;
-
-        return $this;
-    }
-
-    public function getDraggable(): bool
-    {
-        return $this->evaluate($this->draggable);
-    }
-
-    public function sizes(string|Closure $sizes): static
-    {
-        $this->sizes = $sizes;
-
-        return $this;
-    }
-
-    public function getSizes(): string
-    {
-        return $this->evaluate($this->sizes);
-    }
-
-    public function srcSet(string|Closure $srcSet): static
-    {
-        $this->srcSet = $srcSet;
-
-        return $this;
-    }
-
-    public function getSrtSet(): string
-    {
-        return $this->evaluate($this->srcSet);
-    }
-
-    public function selector(string|Closure $selector): static
-    {
-        $this->selector = $selector;
-
-        return $this;
-    }
-
-    public function getSelector(): string
-    {
-        return $this->evaluate($this->selector);
-    }
-
-    public function skin(string|Closure $skin): static
-    {
-        $this->skin = $skin;
-
-        return $this;
-    }
-
-    public function getSkin(): string
-    {
-        return $this->evaluate($this->skin);
+        return $this->evaluate($this->slideType);
     }
 
     public function slideEffect(string|Closure $slideEffect): static
@@ -244,171 +102,75 @@ trait GLightBox
         return $this->evaluate($this->slideEffect);
     }
 
-    public function moreText(string|Closure $moreText): static
+    public function slideWidth(string|Closure $slideWidth): static
     {
-        $this->moreText = $moreText;
+        $this->slideWidth = $slideWidth;
 
         return $this;
     }
 
-    public function getMoreText(): string
+    public function getSlideWidth(): string
     {
-        return $this->evaluate($this->moreText);
+        return $this->evaluate($this->slideWidth);
     }
 
-    public function moreLength(int|Closure $moreLength): static
+    public function slideHeight(string|Closure $slideHeight): static
     {
-        $this->moreLength = $moreLength;
+        $this->slideHeight = $slideHeight;
 
         return $this;
     }
 
-    public function getMoreLength(): int
+    public function getSlideHeight(): string
     {
-        return $this->evaluate($this->moreLength);
+        return $this->evaluate($this->slideHeight);
     }
 
-    public function closeButton(bool|Closure $condition = true): static
+    public function slideZoomable(bool|Closure $condition = true): static
     {
-        $this->closeButton = $condition;
+        $this->slideZoomable = $condition;
 
         return $this;
     }
 
-    public function getCloseButton(): bool
+    public function getSlideZoomable(): bool
     {
-        return $this->evaluate($this->closeButton);
+        return $this->evaluate($this->slideZoomable);
     }
 
-    public function touchNavigation(bool|Closure $condition = true): static
+    public function slideDraggable(bool|Closure $condition = true): static
     {
-        $this->touchNavigation = $condition;
+        $this->slideDraggable = $condition;
 
         return $this;
     }
 
-    public function getTouchNavigation(): bool
+    public function getSlideDraggable(): bool
     {
-        return $this->evaluate($this->touchNavigation);
+        return $this->evaluate($this->slideDraggable);
     }
 
-    public function touchFollowAxis(bool|Closure $condition = true): static
+    public function slideSizes(string|Closure $slideSizes): static
     {
-        $this->touchFollowAxis = $condition;
+        $this->slideSizes = $slideSizes;
 
         return $this;
     }
 
-    public function getTouchFollowAxis(): bool
+    public function getSlideSizes(): string
     {
-        return $this->evaluate($this->touchFollowAxis);
+        return $this->evaluate($this->slideSizes);
     }
 
-    public function keyBoardNavigation(bool|Closure $condition = true): static
+    public function slideSrcSet(string|Closure $slideSrcSet): static
     {
-        $this->keyBoardNavigation = $condition;
+        $this->slideSrcSet = $slideSrcSet;
 
         return $this;
     }
 
-    public function getKeyBoardNavigation(): bool
+    public function getSlideSrtSet(): string
     {
-        return $this->evaluate($this->keyBoardNavigation);
-    }
-
-    public function closeOnOutsideClick(bool|Closure $condition = true): static
-    {
-        $this->closeOnOutsideClick = $condition;
-
-        return $this;
-    }
-
-    public function getCloseOnOutsideClick(): bool
-    {
-        return $this->evaluate($this->closeOnOutsideClick);
-    }
-
-    public function loop(bool|Closure $condition = true): static
-    {
-        $this->loop = $condition;
-
-        return $this;
-    }
-
-    public function getLoop(): bool
-    {
-        return $this->evaluate($this->loop);
-    }
-
-    public function dragToleranceX(string|Closure $dragToleranceX): static
-    {
-        $this->dragToleranceX = $dragToleranceX;
-
-        return $this;
-    }
-
-    public function getDragToleranceX(): string
-    {
-        return $this->evaluate($this->dragToleranceX);
-    }
-
-    public function dragToleranceY(string|Closure $dragToleranceY): static
-    {
-        $this->dragToleranceY = $dragToleranceY;
-
-        return $this;
-    }
-
-    public function getDragToleranceY(): string
-    {
-        return $this->evaluate($this->dragToleranceY);
-    }
-
-    public function dragAutoSnap(bool|Closure $condition = true): static
-    {
-        $this->dragAutoSnap = $condition;
-
-        return $this;
-    }
-
-    public function getDragAutoSnap(): bool
-    {
-        return $this->evaluate($this->dragAutoSnap);
-    }
-
-    public function preload(bool|Closure $condition = true): static
-    {
-        $this->preload = $condition;
-
-        return $this;
-    }
-
-    public function getPreload(): bool
-    {
-        return $this->evaluate($this->preload);
-    }
-
-    public function autoplayVideos(bool|Closure $condition = true): static
-    {
-        $this->autoplayVideos = $condition;
-
-        return $this;
-    }
-
-    public function getAutoplayVideos(): bool
-    {
-        return $this->evaluate($this->autoplayVideos);
-    }
-
-    public function autofocusVideos(bool|Closure $condition = true): static
-    {
-        $this->autofocusVideos = $condition;
-
-        return $this;
-    }
-
-    public function getAutofocusVideos(): bool
-    {
-        return $this->evaluate($this->autofocusVideos);
+        return $this->evaluate($this->slideSrcSet);
     }
 }

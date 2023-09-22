@@ -6,7 +6,7 @@
 
 <img alt="banner" class="filament-hidden" src="https://github.com/njxqlus/filament-lightbox/blob/main/.github/banner.jpg?raw=true">
 
-Lightbox components for Filament.
+Lightbox components for Filament. Supports Spatie Media Library.
 
 ## Installation
 
@@ -20,6 +20,12 @@ Optionally, you can publish the views using
 
 ```bash
 php artisan vendor:publish --tag="filament-lightbox-views"
+```
+
+You can publish the config file to set up lightbox options with:
+
+```bash
+php artisan vendor:publish --tag="filament-lightbox-config"
 ```
 
 ## Usage
@@ -89,21 +95,34 @@ Lightbox::make()
     ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')
 ```
 
+### Lightbox Spatie Media Library Image Entry
+
+This entry wrap [Filament Spatie Media Library Plugin](https://github.com/filamentphp/spatie-laravel-media-library-plugin) entry
+with lightbox
+
+```php
+use Njxqlus\Filament\Components\Infolists\LightboxSpatieMediaLibraryImageEntry;
+
+LightboxSpatieMediaLibraryImageEntry::make('foo')
+    ->collection('images')
+    ->conversion('thumb')
+    ->circular()
+    ->label('Bar')
+```
+
 ### GLightBox
 
-This package uses [GLightBox](https://github.com/biati-digital/glightbox) under the hood. Most of it`s options provided as
-chain methods. There are some of them in the example below.
+This package uses [GLightBox](https://github.com/biati-digital/glightbox) under the hood. Most of its options provided as
+chain methods with `slide` prefix. There are some of them in the example below.
 
 ```php
 use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
 
 LightboxImageEntry::make('foo')
     ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')   
-    ->description(new HtmlString('<strong>Lightbox</strong>'))
-    ->loop()
-    ->widthOption('906px')
-    ->heightOption('500px')
-    ->closeButton(false)
+    ->slideDescription(new HtmlString('<strong>Lightbox</strong>'))
+    ->slideWidth('906px')
+    ->slideHeight('500px')
 ```
 
 ## Testing

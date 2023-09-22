@@ -17,11 +17,9 @@ class FilamentLightboxServiceProvider extends PackageServiceProvider
 
     public function configurePackage(Package $package): void
     {
-        $package->name(static::$name);
-
-        if (file_exists($package->basePath('/../resources/views'))) {
-            $package->hasViews(static::$viewNamespace);
-        }
+        $package->name(static::$name)
+            ->hasConfigFile('filament-lightbox')
+            ->hasViews(static::$viewNamespace);
     }
 
     public function packageBooted(): void
