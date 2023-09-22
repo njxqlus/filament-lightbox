@@ -5,8 +5,9 @@ namespace Njxqlus\Filament\Components\Infolists;
 use Closure;
 use Filament\Infolists\Components\Component;
 use Njxqlus\Filament\Components\GLightBox;
+use Njxqlus\Filament\Components\HasGLightBox;
 
-class Lightbox extends Component
+class Lightbox extends Component implements HasGLightBox
 {
     use GLightBox;
 

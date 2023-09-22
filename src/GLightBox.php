@@ -6,8 +6,6 @@ use Closure;
 
 trait GLightBox
 {
-    abstract public function evaluate(mixed $value, array $namedInjections = [], array $typedInjections = []): mixed;
-
     protected Closure|string $slideGallery = 'gallery1';
 
     protected Closure|string $slideTitle = '';

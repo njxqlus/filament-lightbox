@@ -5,9 +5,10 @@ namespace Njxqlus\Filament\Components\Infolists;
 use Filament\Infolists\ComponentContainer;
 use Filament\Infolists\Components\SpatieMediaLibraryImageEntry;
 use Njxqlus\Filament\Components\GLightBox;
+use Njxqlus\Filament\Components\HasGLightBox;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class LightboxSpatieMediaLibraryImageEntry extends SpatieMediaLibraryImageEntry
+class LightboxSpatieMediaLibraryImageEntry extends SpatieMediaLibraryImageEntry implements HasGLightBox
 {
     use GLightBox;
 
@@ -32,10 +33,10 @@ class LightboxSpatieMediaLibraryImageEntry extends SpatieMediaLibraryImageEntry
             );
     }
 
-    protected function makeLightboxEntryFromMedia(Media $media)
+    protected function makeLightboxEntryFromMedia(Media $media): LightboxEntry
     {
         $entry = LightboxImageEntry::make($media->uuid)
-            ->label(false)
+            ->label(null)
             ->slideGallery($this->getStatePath());
 
         if ($media->hasGeneratedConversion($this->getConversion())) {
