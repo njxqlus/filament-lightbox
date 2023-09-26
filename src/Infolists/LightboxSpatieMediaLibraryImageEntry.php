@@ -80,6 +80,9 @@ class LightboxSpatieMediaLibraryImageEntry extends \Filament\Infolists\Component
         if ($this->getSlideEffect()) {
             $entry->slideEffect($this->getSlideEffect());
         }
+        if ($this->getExtraImgAttributes()) {
+            $entry->extraImgAttributes($this->getExtraImgAttributes());
+        }
 
         return $entry;
     }
