@@ -6,5 +6,5 @@ use Filament\Infolists\ComponentContainer;
 
 class LightboxComponentContainer extends ComponentContainer
 {
-    protected string $view = 'filament-lightbox::lightbox-component-container';
+    protected string $view = 'filament-lightbox::infolists.lightbox-component-container';
 }
