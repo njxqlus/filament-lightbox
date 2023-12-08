@@ -43,7 +43,7 @@ class LightboxImageEntry extends ImageEntry implements HasGLightBox
         return 'filament-lightbox::lightbox-wrapper';
     }
 
-    public function getImageUrl(string $state = null): ?string
+    public function getImageUrl(?string $state = null): ?string
     {
         return $this->image ? $this->evaluate($this->image) : parent::getImageUrl($state);
     }
