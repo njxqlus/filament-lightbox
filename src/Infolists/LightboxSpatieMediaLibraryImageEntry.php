@@ -36,6 +36,7 @@ class LightboxSpatieMediaLibraryImageEntry extends \Filament\Infolists\Component
     {
         $entry = LightboxImageEntry::make($media->uuid)
             ->label(null)
+            ->hiddenLabel(true)
             ->slideGallery($this->getStatePath());
 
         if ($media->hasGeneratedConversion($this->getConversion())) {
