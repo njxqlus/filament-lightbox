@@ -52,22 +52,22 @@ LightboxImageEntry::make('foo')
 ```
 
 By default, all lightbox images on page are on the same gallery. It's mean that you can use arrow to move between them. 
-If you want to divide galleries use a `gallery()` method.
+If you want to divide galleries use a `slideGallery()` method.
 
 ```php
 use Njxqlus\Filament\Components\Infolists\LightboxImageEntry;
 
 LightboxImageEntry::make('foo')          
     ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg')   
-    ->gallery('qux-gallery')
+    ->slideGallery('qux-gallery')
 
 LightboxImageEntry::make('bar')
     ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm8.jpg')
-    ->gallery('qux-gallery')
+    ->slideGallery('qux-gallery')
 
 LightboxImageEntry::make('baz')
     ->href('https://biati-digital.github.io/glightbox/demo/img/large/gm9.jpg')
-    ->gallery('fred-gallery'),
+    ->slideGallery('fred-gallery'),
 ```
 
 Because this entry extends [ImageEntry](https://filamentphp.com/docs/3.x/infolists/entries/image) all methods should be work (except of `url()`).
