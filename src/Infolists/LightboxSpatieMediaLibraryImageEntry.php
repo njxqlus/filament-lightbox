@@ -50,9 +50,7 @@ class LightboxSpatieMediaLibraryImageEntry extends \Filament\Infolists\Component
             } catch (Throwable $exception) {
                 // This driver does not support creating temporary URLs.
             }
-        }
-        else
-        {
+        } else {
             if ($media->hasGeneratedConversion($this->getConversion())) {
                 $entry->state($media->getFullUrl($this->getConversion()));
             } else {
