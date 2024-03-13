@@ -39,13 +39,27 @@ class LightboxSpatieMediaLibraryImageEntry extends \Filament\Infolists\Component
             ->hiddenLabel(true)
             ->slideGallery($this->getStatePath());
 
-        if ($media->hasGeneratedConversion($this->getConversion())) {
-            $entry->state($media->getFullUrl($this->getConversion()));
-        } else {
-            $entry->state($media->getFullUrl());
+        if ($this->getVisibility() === 'private') {
+            try {
+                if ($media->hasGeneratedConversion($this->getConversion())) {
+                    $entry->state($media->getTemporaryUrl(now()->addMinutes(5), $this->getConversion()));
+                } else {
+                    $entry->state($media->getTemporaryUrl(now()->addMinutes(5)));
+                }
+                $entry->href($media->getTemporaryUrl(now()->addMinutes(5)));
+            } catch (Throwable $exception) {
+                // This driver does not support creating temporary URLs.
+            }
         }
-
-        $entry->href($media->getFullUrl());
+        else
+        {
+            if ($media->hasGeneratedConversion($this->getConversion())) {
+                $entry->state($media->getFullUrl($this->getConversion()));
+            } else {
+                $entry->state($media->getFullUrl());
+            }
+            $entry->href($media->getFullUrl());
+        }
 
         if ($this->isCircular()) {
             $entry->circular();
