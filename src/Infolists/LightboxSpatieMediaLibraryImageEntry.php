@@ -41,7 +41,7 @@ class LightboxSpatieMediaLibraryImageEntry extends \Filament\Infolists\Component
 
         if ($this->getVisibility() === 'private') {
             try {
-                if ($media->hasGeneratedConversion($this->getConversion())) {
+                if ($this->getConversion() && $media->hasGeneratedConversion($this->getConversion())) {
                     $entry->state($media->getTemporaryUrl(now()->addMinutes(5), $this->getConversion()));
                 } else {
                     $entry->state($media->getTemporaryUrl(now()->addMinutes(5)));
@@ -51,7 +51,7 @@ class LightboxSpatieMediaLibraryImageEntry extends \Filament\Infolists\Component
                 // This driver does not support creating temporary URLs.
             }
         } else {
-            if ($media->hasGeneratedConversion($this->getConversion())) {
+            if ($this->getConversion() && $media->hasGeneratedConversion($this->getConversion())) {
                 $entry->state($media->getFullUrl($this->getConversion()));
             } else {
                 $entry->state($media->getFullUrl());
