@@ -2,7 +2,7 @@
 
 namespace Njxqlus\Filament\Components\Infolists;
 
-use Filament\Infolists\ComponentContainer;
+use Filament\Schemas\Schema;
 use Njxqlus\Filament\Components\GLightBox;
 use Njxqlus\Filament\Components\HasGLightBox;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -13,7 +13,7 @@ class LightboxSpatieMediaLibraryImageEntry extends \Filament\Infolists\Component
 
     protected string $view = 'filament-lightbox::infolists.lightbox-spatie-media-library-image-entry';
 
-    public function getChildComponentContainer($key = null): ComponentContainer
+    public function getChildComponentContainer($key = null): Schema
     {
         if (filled($key)) {
             return $this->getChildComponentContainers()[$key];
