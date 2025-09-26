@@ -3,7 +3,7 @@
 namespace Njxqlus\Filament\Components\Infolists;
 
 use Closure;
-use Filament\Infolists\Components\ImageEntry;
+use Filament\Schemas\Components\ImageEntry;
 use Njxqlus\Filament\Components\GLightBox;
 use Njxqlus\Filament\Components\HasGLightBox;
 
